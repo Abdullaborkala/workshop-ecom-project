@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import ChatWidget from './components/ChatWidget.jsx';
 import Home from './pages/Home.jsx';
 import ProductDetails from './pages/ProductDetails.jsx';
 import Cart from './pages/Cart.jsx';
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/admin/orders" element={<ProtectedRoute adminOnly><AdminOrders /></ProtectedRoute>} />
         </Routes>
       </main>
+      <ChatWidget />
     </>
   );
 }
