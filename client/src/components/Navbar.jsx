@@ -12,6 +12,7 @@ export default function Navbar() {
       <Link to="/cart">Cart ({count})</Link>
       {user ? (
         <>
+          {user.isAdmin && <Link to="/admin">Admin</Link>}
           <Link to="/my-orders">My Orders</Link>
           <Link to="/profile">Hi, {user.name}</Link>
           <button className="btn" onClick={logout}>Logout</button>
