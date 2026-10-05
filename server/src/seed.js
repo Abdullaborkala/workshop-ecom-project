@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import connectDB from './config/db.js';
 import Product from './models/Product.js';
 import User from './models/User.js';
+import Order from './models/Order.js';
 
 const img = (seed) => `https://picsum.photos/seed/${seed}/400/300`;
 
@@ -16,6 +17,7 @@ const products = [
 ];
 
 await connectDB();
+await Order.deleteMany();
 await Product.deleteMany();
 await Product.insertMany(products);
 console.log(`Seeded ${products.length} products`);

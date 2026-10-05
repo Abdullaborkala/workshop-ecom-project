@@ -7,6 +7,8 @@ import Cart from './pages/Cart.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Profile from './pages/Profile.jsx';
+import Checkout from './pages/Checkout.jsx';
+import MyOrders from './pages/MyOrders.jsx';
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+          <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute>} />
         </Routes>
       </main>
     </>

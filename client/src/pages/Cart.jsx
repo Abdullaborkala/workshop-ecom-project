@@ -29,6 +29,7 @@ export default function Cart() {
         </tbody>
       </table>
       <h2>Total: Rs. {total}</h2>
+      <Link to="/checkout" className="btn">Proceed to checkout</Link>
     </div>
   );
 }

@@ -30,3 +30,4 @@ git diff chapter-02-backend-setup chapter-03-product-api   # what a chapter adde
 | 06 | `chapter-06-cart` | Cart with React Context + localStorage | [docs](docs/chapter-06-cart.md) |
 | 07 | `chapter-07-auth-backend` | User model, bcrypt, JWT, auth middleware | [docs](docs/chapter-07-auth-backend.md) |
 | 08 | `chapter-08-auth-frontend` | Login/Register pages, token interceptor, protected routes | [docs](docs/chapter-08-auth-frontend.md) |
+| 09 | `chapter-09-orders` | Order model, checkout, order history | [docs](docs/chapter-09-orders.md) |
