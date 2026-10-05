@@ -5,6 +5,7 @@ app is created in a **modular** way.
 
 - **Frontend:** React (Vite) + React Router + Axios
 - **Backend:** Node.js + Express + Mongoose (MongoDB) + JWT
+- **AI:** Gemini (`@google/genai`) or OpenRouter (plain `fetch`) for the shopping assistant chat, chosen with `AI_PROVIDER`
 
 Every chapter lives on its **own git branch**. Each branch is created from the
 previous one, so you can jump to any lesson and see the code exactly as it was
@@ -36,6 +37,8 @@ if that chapter added new packages.
 | 09 | `chapter-09-orders` | Order model, checkout, order history | [docs](docs/chapter-09-orders.md) |
 | 10 | `chapter-10-admin` | Admin product CRUD (create, edit, delete) | [docs](docs/chapter-10-admin.md) |
 | 11 | `chapter-11-admin-orders` | Admin order list + status updates (ship, deliver, cancel) | [docs](docs/chapter-11-admin-orders.md) |
+| 12 | `chapter-12-shadcn-home` | Tailwind + shadcn/ui home page (carousel, search, skeletons) | [docs](docs/chapter-12-shadcn-home.md) |
+| 13 | `chapter-13-ai-chat-openrouter` | AI shopping assistant chat with Gemini or OpenRouter | [docs](docs/chapter-13-ai-chat-openrouter.md) |
 
 ## Run the finished app
 
@@ -46,6 +49,7 @@ if that chapter added new packages.
 cd server
 npm install
 cp .env.example .env        # Windows: copy .env.example .env
+                            # set AI_PROVIDER and its key (OPENROUTER_API_KEY or GEMINI_API_KEY)
 npm run seed                # sample products + demo users
 npm run dev                 # http://localhost:5050
 
@@ -69,16 +73,17 @@ server/src/
   app.js           middleware + mounts routes
   config/db.js     MongoDB connection
   models/          Product, User, Order (data shape)
-  controllers/     product, auth, order (business logic)
+  controllers/     product, auth, order, chat (business logic)
   routes/          URL -> controller mapping
   middleware/      auth (protect, admin), error handling
+  services/ai.js   askAI(): Gemini or OpenRouter
   seed.js          sample data
 client/src/
   main.jsx         providers + router
   App.jsx          route list
   api/axios.js     axios instance + token interceptor
   context/         CartContext, AuthContext (global state)
-  components/      Navbar, ProductCard, ProtectedRoute
+  components/      Navbar, ProductCard, ProtectedRoute, ChatWidget, ui/ (shadcn)
   pages/           Home, ProductDetails, Cart, Login, Register, Profile, Checkout, MyOrders, Admin, AdminOrders
 ```
 
@@ -99,6 +104,7 @@ client/src/
 | GET | `/api/orders/mine` | logged in |
 | GET | `/api/orders` | admin |
 | PUT | `/api/orders/:id/status` | admin |
+| POST | `/api/chat` | public |
 
 ## Ports
 The backend uses **5050** and the frontend **3000** so they do not clash with
