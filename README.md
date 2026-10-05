@@ -39,6 +39,7 @@ if that chapter added new packages.
 | 11 | `chapter-11-admin-orders` | Admin order list + status updates (ship, deliver, cancel) | [docs](docs/chapter-11-admin-orders.md) |
 | 12 | `chapter-12-shadcn-home` | Tailwind + shadcn/ui home page (carousel, search, skeletons) | [docs](docs/chapter-12-shadcn-home.md) |
 | 13 | `chapter-13-ai-chat` | AI shopping assistant chat with Gemini | [docs](docs/chapter-13-ai-chat.md) |
+| 14 | `chapter-14-login-ui` | Login page redesign with shadcn (split card, alerts, demo logins) | [docs](docs/chapter-14-login-ui.md) |
 
 ## Run the finished app
 
