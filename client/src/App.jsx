@@ -16,7 +16,7 @@ export default function App() {
   return (
     <>
       <Navbar />
-      <main className="container">
+      <main className="mx-auto max-w-6xl px-4 py-6">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
