@@ -27,3 +27,4 @@ git diff chapter-02-backend-setup chapter-03-product-api   # what a chapter adde
 | 03 | `chapter-03-product-api` | Product model, controller, routes, seed | [docs](docs/chapter-03-product-api.md) |
 | 04 | `chapter-04-frontend-setup` | React + Vite, router, axios, proxy | [docs](docs/chapter-04-frontend-setup.md) |
 | 05 | `chapter-05-product-ui` | Product cards, grid, details page | [docs](docs/chapter-05-product-ui.md) |
+| 06 | `chapter-06-cart` | Cart with React Context + localStorage | [docs](docs/chapter-06-cart.md) |
