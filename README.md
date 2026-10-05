@@ -24,3 +24,4 @@ git diff chapter-02-backend-setup chapter-03-product-api   # what a chapter adde
 |---|--------|-------|-------|
 | 01 | `chapter-01-setup` | Project setup and MERN architecture | [docs](docs/chapter-01-setup.md) |
 | 02 | `chapter-02-backend-setup` | Express server + MongoDB connection | [docs](docs/chapter-02-backend-setup.md) |
+| 03 | `chapter-03-product-api` | Product model, controller, routes, seed | [docs](docs/chapter-03-product-api.md) |
