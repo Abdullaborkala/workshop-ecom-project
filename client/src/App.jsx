@@ -10,6 +10,7 @@ import Profile from './pages/Profile.jsx';
 import Checkout from './pages/Checkout.jsx';
 import MyOrders from './pages/MyOrders.jsx';
 import Admin from './pages/Admin.jsx';
+import AdminOrders from './pages/AdminOrders.jsx';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
           <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute adminOnly><Admin /></ProtectedRoute>} />
+          <Route path="/admin/orders" element={<ProtectedRoute adminOnly><AdminOrders /></ProtectedRoute>} />
         </Routes>
       </main>
     </>

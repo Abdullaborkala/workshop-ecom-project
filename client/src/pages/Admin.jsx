@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../api/axios.js';
 
 const emptyForm = { name: '', description: '', price: '', image: '', countInStock: 0 };
@@ -45,6 +46,7 @@ export default function Admin() {
   return (
     <div>
       <h1>Admin - Products</h1>
+      <p><Link to="/admin/orders">Manage orders</Link></p>
 
       <form className="form" onSubmit={handleSubmit}>
         <h3>{editingId ? 'Edit product' : 'Add product'}</h3>

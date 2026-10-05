@@ -1,4 +1,4 @@
-import Order from '../models/Order.js';
+import Order, { ORDER_STATUSES } from '../models/Order.js';
 import Product from '../models/Product.js';
 
 // POST /api/orders   body: { items: [{ product, qty }], address }
@@ -32,4 +32,33 @@ export const placeOrder = async (req, res) => {
 export const getMyOrders = async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
   res.json(orders);
+};
+
+// GET /api/orders (admin)
+export const getAllOrders = async (req, res) => {
+  const orders = await Order.find().populate('user', 'name email').sort({ createdAt: -1 });
+  res.json(orders);
+};
+
+// PUT /api/orders/:id/status (admin)   body: { status }
+export const updateOrderStatus = async (req, res) => {
+  const { status } = req.body;
+  if (!ORDER_STATUSES.includes(status)) return res.status(400).json({ message: 'Invalid status' });
+
+  const order = await Order.findById(req.params.id);
+  if (!order) return res.status(404).json({ message: 'Order not found' });
+  if (order.status === 'Cancelled') {
+    return res.status(400).json({ message: 'Cancelled orders cannot be changed' });
+  }
+
+  // Cancelling puts the items back in stock
+  if (status === 'Cancelled') {
+    for (const item of order.items) {
+      await Product.findByIdAndUpdate(item.product, { $inc: { countInStock: item.qty } });
+    }
+  }
+
+  order.status = status;
+  await order.save();
+  res.json(order);
 };

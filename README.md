@@ -35,6 +35,7 @@ if that chapter added new packages.
 | 08 | `chapter-08-auth-frontend` | Login/Register pages, token interceptor, protected routes | [docs](docs/chapter-08-auth-frontend.md) |
 | 09 | `chapter-09-orders` | Order model, checkout, order history | [docs](docs/chapter-09-orders.md) |
 | 10 | `chapter-10-admin` | Admin product CRUD (create, edit, delete) | [docs](docs/chapter-10-admin.md) |
+| 11 | `chapter-11-admin-orders` | Admin order list + status updates (ship, deliver, cancel) | [docs](docs/chapter-11-admin-orders.md) |
 
 ## Run the finished app
 
@@ -78,7 +79,7 @@ client/src/
   api/axios.js     axios instance + token interceptor
   context/         CartContext, AuthContext (global state)
   components/      Navbar, ProductCard, ProtectedRoute
-  pages/           Home, ProductDetails, Cart, Login, Register, Profile, Checkout, MyOrders, Admin
+  pages/           Home, ProductDetails, Cart, Login, Register, Profile, Checkout, MyOrders, Admin, AdminOrders
 ```
 
 ## API summary
@@ -96,6 +97,8 @@ client/src/
 | GET | `/api/auth/me` | logged in |
 | POST | `/api/orders` | logged in |
 | GET | `/api/orders/mine` | logged in |
+| GET | `/api/orders` | admin |
+| PUT | `/api/orders/:id/status` | admin |
 
 ## Ports
 The backend uses **5050** and the frontend **3000** so they do not clash with

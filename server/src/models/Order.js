@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+export const ORDER_STATUSES = ['Placed', 'Shipped', 'Delivered', 'Cancelled'];
+
 const orderItemSchema = new mongoose.Schema({
   product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
   name: String,
@@ -13,7 +15,7 @@ const orderSchema = new mongoose.Schema(
     items: [orderItemSchema],
     address: { type: String, required: true },
     total: { type: Number, required: true },
-    status: { type: String, default: 'Placed' },
+    status: { type: String, enum: ORDER_STATUSES, default: 'Placed' },
   },
   { timestamps: true }
 );
