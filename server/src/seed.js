@@ -2,6 +2,7 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import connectDB from './config/db.js';
 import Product from './models/Product.js';
+import User from './models/User.js';
 
 const img = (seed) => `https://picsum.photos/seed/${seed}/400/300`;
 
@@ -18,4 +19,9 @@ await connectDB();
 await Product.deleteMany();
 await Product.insertMany(products);
 console.log(`Seeded ${products.length} products`);
+
+await User.deleteMany();
+await User.create({ name: 'Admin', email: 'admin@store.com', password: 'admin123', isAdmin: true });
+await User.create({ name: 'Student', email: 'student@store.com', password: 'student123' });
+console.log('Seeded users: admin@store.com / admin123, student@store.com / student123');
 await mongoose.disconnect();
